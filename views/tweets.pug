@@ -1,0 +1,127 @@
+extend mainLayout.pug
+
+block loadStyles
+  //- correct place to add STYLESHEETS needed for this particular page
+  link(rel='stylesheet', type='text/css', href='https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css')
+block content
+  script(src='/socket.io/socket.io.js')
+  .row
+    .col-lg-12#alertsRow
+  .row
+    //-section that displays form inside a panel
+    .col-lg-7
+      .panel.panel-default#formPanel
+        .panel-heading 
+          h4 Add players, teams, and authors to search twitter by
+        .panel-body
+          form#tweetsForm
+            .row
+              .col-lg-4.form-group
+                | Player
+                .input-group
+                  input.form-control#player(type='text', name='player', placeholder='@waynerooney')
+                  span.input-group-btn
+                    button.btn.btn-primary#addName(type='button' disabled)
+                      i.fa.fa-plus 
+                      |  Add
+                .div.tagsContainer
+                  ul#player_list
+
+              .col-lg-4.form-group
+                |  Team name
+                .input-group
+                  input.form-control#team(type='text', name='team', placeholder='Chelsea')
+                  span.input-group-btn
+                    button.btn.btn-primary#addTeam(type='button' disabled)
+                      i.fa.fa-plus 
+                      |  Add
+                .div.tagsContainer
+                  ul#team_list
+                
+              .col-lg-4.form-group
+                |  Author
+                .input-group
+                  input.form-control#author(type='text', name='author', placeholder='@deadlinedaylive')
+                  span.input-group-btn
+                    button.btn.btn-primary#addAuthor(type='button' disabled)
+                      i.fa.fa-plus 
+                      |  Add
+                .div.tagsContainer
+                  ul#author_list
+            hr
+            .row
+              .col-lg-6
+                h5
+                  |Search options
+                label.radio-inline
+                  input(type='radio', name='searchType', value='t_db', checked="checked")
+                  | Database and Twitter
+                label.radio-inline
+                  input(type='radio', name='searchType', value='db')
+                  | Database only
+
+              .col-lg-3
+                h5
+                  |Logic operator
+                label.radio-inline
+                  input(type='radio', name='operator', value='AND', checked='checked')
+                  | AND
+                label.radio-inline
+                  input(type='radio', name='operator', value='OR')
+                  | OR
+            hr
+            button.btn.btn-primary.btn-block#searchButton(type='submit', disabled, data-loading-text="<i class='fa fa-spinner fa-spin '></i> Searching...")
+              i.fa.fa-search
+              |  Search
+
+    //-a panel that displays information acquired from dbpedia
+    .col-lg-5
+      .panel.panel-default.hiden#playerSummary
+        .panel-heading 
+          h4 Summary of players
+        .panel-body
+          table#playerInfoTable.table.table-stripped
+            thead
+              tr
+                th Full name
+                th Date of birth
+                th Position
+                th Team
+            tbody
+  
+  .row
+    //-section that displays retrieved tweets table inside a panel
+    .col-lg-7
+      .panel.panel-default#tweetsPanel
+        .panel-heading 
+          h4  Retrieved tweets
+        .panel-body
+          table#tweetsTable.table.table-striped
+            thead
+              tr
+                th Author
+                th Tweet
+                th Date
+            tbody
+
+    //-section that displays frequency chart inside a panel  
+    .col-lg-5
+      .panel.panel-default#chartPanel
+        .panel-heading
+          h4 Frequency chart
+        .panel-body#chartPanelBody
+          p#chartNotice
+          canvas(id="tweetsChart", width="400", height="400")
+
+block loadScripts
+  //-correct place to load JS files needed for this particular page
+  script(src="https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js")
+  script(src='assets/js/interface.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js')
+  script(src='assets/js/chartHandler.js')
+  script(src='assets/js/querySender.js')
+
+
+
+
+

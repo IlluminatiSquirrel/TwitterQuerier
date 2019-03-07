@@ -1,0 +1,94 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height:30px;
+    margin-bottom: 60px;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-inner {
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:40px;
+   
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    
+    background-color:#214761;
+    width:100%;
+    color:#fff;
+    padding:20px 50px 20px 50px;
+    padding-left:20px;
+}
+
+.page-header {
+    background-color:#214761;
+    margin: 0px;
+    padding:20px 50px 20px 50px;
+}
+
+.header{
+    color:white;
+    text-align: center;
+    margin: 0px;
+}
+
+#page-inner{
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tagsContainer{
+    margin: auto;
+    margin-top: 5px;
+    background: #f2f2f2;
+}
+
+.liTag{
+    list-style-type: none;
+    padding: 0;
+    margin: 5px;
+}
+
+.liTag{
+    /*width: 100%;*/
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: arial;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    /*background: #e6f9ff;*/
+}
+
+.liTag:hover{
+    text-decoration: line-through;
+    /*background:  #ff8080;*/
+}
+
+
+.hidden{
+    display: none;
+}
+
+canvas{
+    width: 100% !important;
+    max-width: 800px;
+    height: auto !important;
+}
+
+
+
+
